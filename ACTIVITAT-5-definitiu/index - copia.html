@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QUEEN MANIA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family:  "Crimson Text", serif;
+  margin: 0;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Header */
+header {
+  padding: 60px;
+  text-align: center;
+  color: white;
+  background-image: url(decoracion.jpg);
+  background-size: cover;
+  height: 250px;
+  background-position: center;
+}
+
+/*NAVAR*/
+.navbar {
+  display: flex;
+  background-color: #0073e6;
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+.navbar a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+  float: left;
+  display: block;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Column container */
+.container {  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* ASIDE/right column */
+.side {
+  flex: 35%;
+  background-color:rgb(154, 204, 255);
+  padding: 20px;
+  text-align: center;
+  height: 100%;
+}
+.imgside {
+  margin: 10px;
+}
+.imgside img {
+  width: 325px; 
+  height: auto; 
+  border-radius: 8px; 
+  display: block;
+  margin: 0 auto;
+}
+.side p {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 20px;
+}
+
+/* CONTINGUT PRINCIPAL */
+.main {
+  flex: 65%;
+  background-color: white;
+  padding: 20px;
+  padding-bottom: 180px;
+}
+.main h2{
+  text-align: justify;
+  margin-top: 5px;
+  font-size: 26px;
+}
+.main p{
+  text-align: justify;
+  margin-top: 5px;
+  font-size: 20px;
+}
+.main h5{
+  text-align: justify;
+  margin-top: 5px;
+  font-size: 22px
+}
+    /*CARTES DE CANÇONS CONEGUDES*/
+.cards{
+  display:flex;
+  text-align: center;
+  padding: 20px;
+}
+
+.cards h4{
+  text-align: center;
+  padding:20px;
+  font-size: 24px;
+}
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.tarjeta {
+  padding: 2px 16px;
+}
+img {
+  border-radius: 5px 5px 0 0;
+}
+.cards a:link, a:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid  #0073e6
+;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cards a:hover, a:active {
+  background-color:  #0073e6;
+  color: white;
+}
+
+  /*CARTES QUE ES GIREN DE CANÇOS PER DESCOBRIR*/
+.flip-cards{
+  display:flex;
+  text-align: center;
+}
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; 
+}
+/* per aconseguir la posició tant fronal com d'esquenes */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+/* fer que la carta giri */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Posició de front i la part de darrera */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Estil de la part frontal */
+.flip-card-front {
+  background-color: #bbb;
+  color: white;
+}
+
+/* Estil de la part de darrera */
+.flip-card-back {
+  background-color: rgb(154, 204, 255);
+  color: white;
+  transform: rotateY(180deg);
+  padding: 15px;
+}
+
+    /*IMATGES DE LES ANÈCDOTES*/
+.imganecdotes img{
+  width: 300px; /* Tamaño pequeño */
+  height: auto; /* Mantiene proporciones */
+  border-radius: 8px; /* Opcional: esquinas redondeadas */
+  display: block;
+  margin: 0 auto; /* Centra la imagen */
+}
+
+  /*GALERIA*/
+div.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  height: 180px;
+}
+
+div.gallery-item {
+  margin: 20px;
+  border: 1px solid #ccc;
+  width: 180px;
+  height: 180px;
+}
+
+div.gallery-item:hover {
+  border: 1px solid #777;
+}
+
+div.gallery-item img {
+  width: 100%;
+  height: 100%;
+}
+
+/* FOOTER */
+footer {
+  padding: 20px;
+  text-align: left;
+  background:  #0073e6;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 130px;
+  width: 100%;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .container, .navbar {   
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <h1>QUEEN MANIA</h1>
+</header>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+  <a href="#Integrantsdelgrup">INTEGRANTS DEL GRUP</a>
+  <a href="#Cançonsmésescoltades">CANÇONS MÉS ESCOLTADES</a>
+  <a href="#Descobreixméscançons">DESCOBREIX MÉS CANÇONS</a>
+  <a href="#Anècdotes">ANÈCDOTES</a>
+  <a href="#GALERIA">GALERIA</a>
+</div>
+
+<!-- Content Container -->
+<div class="container">
+  <div class="main">
+    <!--CANÇONS MÉS ESCOLTADES-->
+  <section id="Cançonsmésescoltades">
+    <h2>CANÇONS MÉS ESCOLTADES</h2>
+      <div class="cards">
+    <div class="card">
+      <img src="bohemian rhapsody.jpg" alt="Avatar" style="width:300px;height:300px;">
+      <div class="tarjeta">
+       <h4><b>Bohemian Rhapsody</b></h4>
+       <p>Queen ha fet més en una cançó de 6 minuts de durada que molts artistes en tota la seva discografia.</p>
+       <a href="https://www.youtube.com/watch?v=fJ9rUzIMcZQ&list=RDfJ9rUzIMcZQ&start_radio=1" class="btn btn-primary">Escolta-la!</a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="we are the champions.jpg" alt="Avatar" style="width:300px;height:300px;">
+      <div class="tarjeta">
+       <h4><b>We Are The Champions</b></h4>
+       <p>L'himne de tot guanyador... fins i tot en una partida de parxís.</p>
+       <a href="https://www.youtube.com/watch?v=04854XqcfCY&list=RD04854XqcfCY&start_radio=1" class="btn btn-primary">Escolta-la!</a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="Don't stop me now.jpg" alt="Avatar" style="width:300px;height:300px;">
+      <div class="tarjeta">
+       <h4><b>Don't Stop Me Now</b></h4>
+       <p>La millor cançó per quan vols començar una festa... o acabar-la a les 6 del matí.</p>
+       <a href="https://www.youtube.com/watch?v=HgzGwKwLmgM&list=RDHgzGwKwLmgM&start_radio=1" class="btn btn-primary">Escolta-la!</a>
+      </div>
+    </div>
+    </div>
+    </section>
+
+    <!--DESCOBREIX MÉS CANÇONS-->
+    <section id="Descobreixméscançons">
+    <h2>DESCOBREIX MÉS CANÇONS</h2>
+  <div class="flip-cards">
+    <div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="Innuendo.jpg" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <h3>Innuendo</h3>
+      <p>Aquí és el moment en què Queen decideix crear una balada rockera acompanyada d'una guitarra acústica, i clar, el resultat és una obra mestra.</p>
+      <a href="https://www.youtube.com/watch?v=g2N0TkfrQhY&list=RDg2N0TkfrQhY&start_radio=1" class="btn btn-primary">Escolta-la!</a>
+    </div>
+  </div>
+</div>
+    <div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="Brighton Rock.png" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <h3>Brighton Rock</h3>
+      <p>Si aquesta cançó fos un experiment científic, el resultat seria una reacció en cadena de solos de guitarra i adrenalina.</p>
+      <a href="https://www.youtube.com/watch?v=BUt_7TQCWtU&list=RDBUt_7TQCWtU&start_radio=1" class="btn btn-primary">Escolta-la!</a>
+    </div>
+  </div>
+</div>
+    <div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="Queen_Spread_Your_Wings.png" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <h3>Spread Your Wings</h3>
+      <p>Quan Queen et diu que deixis tot i volis cap a la llibertat… però tu només vols volar fins al sofà.</p>
+      <a href="https://www.youtube.com/watch?v=uyd6OLyhPJo&list=RDuyd6OLyhPJo&start_radio=1" class="btn btn-primary">Escolta-la!</a>
+    </div>
+  </div>
+</div>
+</div>
+    </section>
+    <br>
+    <br>
+
+   <!--ANÈCDOTES-->
+<section id="Anècdotes">
+    <h2>ANÈCDOTES</h2>
+  <div class="anècdota-1">
+    <h5> Michael Jackson i la seva obsessió amb Another One Bites The Dust</h5>
+        <p>Another One Bites the Dust mai va ser considerat com un potencial senzill fins que la banda ho va tocar enfront de Michael Jackson.
+    Ell va quedar tan impactat que els va aconsellar que el llancessin perquè sonés a totes les estacions de ràdio als EUA.
+    Roger Taylor va recordar el 2012 com Jackson els deia que "estaven bojos" si no llançaven la cançó com un senzill. Però Taylor pensava que “mai no serà un èxit”.</p>
+    <div class="imganecdotes">
+      <img src="Michael Jackson con queen.jpg">
+    </div>
+    </div>
+    <p>I ha resultat una de les cançons que, amb les primeres notes, es reconeix a tot arreu.</p>
+    <h5> L’Oda del pollastre fregit a One Vision</h5>
+        <p>La cançó One Vision, del 1985, va començar amb un ritme de Brian May que va motivar Freddie Mercury a aplicar el seu talent al voltant de la melodia en lloc de la lletra.
+Quan l'assajaven a l'estudi, Mercury cantava paraules a l'atzar que incloïen menjar: "One shrimp, one prawn, one clam, one chicken" ("Una gamba, un llagostí, una cloïssa, un pollastre").
+Al final, la cançó acaba amb un emfàtic crit de Mercury de "Just gimme, gimme, gimme, gimme... fried chicken!" ("Dóna'm, dóna'm, dóna'm, dóna'm, dóna'm, dóna'm… pollastre fregit!"). </p>
+    <div class="imganecdotes">
+      <img src="Queen Cantando.png" >
+    </div>
+    <p>El final és definitivament divertit, però no hi ha dubte que Queen sempre va prendre la seva professionalitat molt de debò. D'aquí ve probablement el seu èxit rotund al llarg de dècades.</p>
+    <h5>Mai se sap quan pot venir la inspiració</h5>
+    <p>En diverses entrevistes el mànager de Freddie Mercury ha explicat que sempre duia una llibreta i un boli al damunt perquè en Freddie es podia posar a escriure una cançó en qualsevol moment. D’aquesta situació va aparèixer la cançó “Crazy Little Thing Called Love”, la qual va escriure Freddie en 10 minuts mentre estava al lavabo. Segons el mànager, Mercury va sortir corrents del lavabo i va anar directe a l’estudi a compondre. </p>
+    <div class="imganecdotes">
+      <img src="Freddy cantando.png">
+        </div>
+    <h5>No volien a Freddie Mercury a la banda?</h5>
+    <p>Abans de Queen, quan encara eren tots estudiants universitaris, els membres Roger Taylor i Brian May formaven part, d'una banda, anomenada Smile on el cantant era Tim Staffel, conegut de Freddie Mercury.
+    Mercury els havia seguit a alguns concerts i tenia moltes aspiracions musicals, però els membres de Smile no estaven segurs de les capacitats de Freddie Mercury. Malgrat això, van acabar fent-se bons amics i, al cap i a la fi, tots perseguien un mateix somni: ser estrelles de rock. I bé, tots ja sabem com va acabar la història. </p>
+    <div class="imganecdotes">
+      <img src="Freddy componiendo.jpg">
+        </div>
+  </section>
+
+<!--GALERIA-->
+<section  id="Galeria">
+  <h2>GALERIA</h2>
+<div class="gallery">
+<div class="gallery-item">
+  <a target="_blank" href="Queen 1.jpg">
+    <img src="Queen 1.jpg" alt="Cinque Terre" width="600" height="400">
+  </a>
+</div>
+
+<div class="gallery-item">
+  <a target="_blank" href="Queen 2.jpg">
+    <img src="Queen 2.jpg" alt="Forest" width="600" height="400">
+  </a>
+</div>
+
+<div class="gallery-item">
+  <a target="_blank" href="Queen 3.jpg">
+    <img src="Queen 3.jpg" alt="Northern Lights" width="600" height="400">
+  </a>
+</div>
+
+<div class="gallery-item">
+  <a target="_blank" href="Queen 4.jpg">
+    <img src="Queen 4.jpg" alt="Mountains" width="600" height="400">
+  </a>
+</div>
+</div>
+</section>
+    </div>
+
+  <!--ASIDE-->
+    <section id="Integrantsdelgrup">
+  <div class="side">
+    <h2>INTEGRANTS DEL GRUP</h2>
+    <div class="imgside">
+      <img src="Freddy Mercury.jpg" alt="">
+      <p>Freddy Mercury</p>
+    </div>
+    <div class="imgside">
+      <img src="John Deacon.jpg" alt="">
+      <p>John Deacon</p>
+    </div>
+    <div class="imgside">
+      <img src="Roger Taylor.jpg" alt="">
+      <p>Roger Taylor</p>
+    </div>
+    <div class="imgside">
+      <img src="Brian May.jpg" alt="">
+      <p>Brian May</p>
+    </div>
+  </div>
+    </section>
+</div>
+
+
+
+<!-- Footer -->
+ <section>
+<footer>
+  <h2>QUEEN MANIA</h2>
+  <p>Ainhoa Martínez, Héctor Moreno i Laura Esteban <br>2025 - Publicació electrònica, Grau en Mitjans Audiovisuals</p>
+</footer>
+
+</body>
+</html>
+
+
